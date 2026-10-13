@@ -1,0 +1,4 @@
+@EndUserText.label: 'Z_C_SD_MOVIMIENTO'
+define service Z_C_SD_MOVIMIENTO {
+  expose Z_C_MOVIMIENTO_MATERIAL_Q;
+}

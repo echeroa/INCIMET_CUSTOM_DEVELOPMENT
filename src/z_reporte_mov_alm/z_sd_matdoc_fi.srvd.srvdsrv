@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Def para Reporte Almacen'
+define service Z_SD_MATDOC_FI {
+  expose Z_I_MATDOC_FI_REPORTE;
+  expose Z_I_MATDOC_HELPER;
+}

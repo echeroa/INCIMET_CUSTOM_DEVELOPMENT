@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_TBL_ASING_MRKO'
+@MappingRole: true
+define role ZC_TBL_ASING_MRKO {
+  grant select on ZC_TBL_ASING_MRKO
+  where INHERITING CONDITIONS FROM ENTITY ZR_TBL_ASING_MRKO REPLACING { ROOT WITH _BaseEntity };
+}

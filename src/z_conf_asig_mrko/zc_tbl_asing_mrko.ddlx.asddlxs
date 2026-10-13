@@ -1,0 +1,245 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'UUID'
+@UI.headerInfo.title.label:'Asignación de valores MRKO'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'UUID'
+annotate view ZC_TBL_ASING_MRKO with
+{
+  @EndUserText.label: 'UUID'
+  @UI.facet: [ {
+    label: 'Información General',
+    id: 'GeneralInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  UUID;
+
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  Companycode;
+
+  @UI.identification: [ {
+  position: 21
+  } ]
+  @UI.lineItem: [ {
+    position: 21
+  } ]
+
+  CompanyCodeName;
+  @EndUserText.label: 'Proveedor'
+  @UI.identification: [ {
+    position: 30
+  } ]
+  @UI.lineItem: [ {
+    position: 30
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  Supplier;
+  @UI.identification: [ {
+  position: 31
+  } ]
+  @UI.lineItem: [ {
+    position: 31
+  } ]
+
+  SupplierName;
+  @EndUserText.label: 'Centro'
+  @UI.identification: [ {
+    position: 40
+  } ]
+  @UI.lineItem: [ {
+    position: 40
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+
+  Plant;
+  @UI.identification: [ {
+  position: 41
+  } ]
+  @UI.lineItem: [ {
+    position: 41
+  } ]
+
+  PlantName;
+  @UI.identification: [ {
+    position: 50
+  } ]
+  @UI.lineItem: [ {
+    position: 50
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  FolioFactura;
+
+  @UI.identification: [ {
+    position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 60
+  } ]
+  @UI.selectionField: [ {
+    position: 60
+  } ]
+  FechaEmision;
+
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  FechaContabilizacion;
+  @EndUserText.label: 'Clase de documento'
+  @UI.identification: [ {
+    position: 71
+  } ]
+  @UI.lineItem: [ {
+    position: 71
+  } ]
+  @UI.selectionField: [ {
+    position: 71
+  } ]
+  ClaseDocumento;
+  @UI.identification: [ {
+   position: 72
+  } ]
+  @UI.lineItem: [ {
+    position: 72
+  } ]
+  @UI.selectionField: [ {
+    position: 72
+  } ]
+  @EndUserText.label: 'Clase de documento texto'
+  ClaseDocumentoTexto;
+  @EndUserText.label: 'Condiciones de pago'
+  @UI.identification: [ {
+   position: 73
+  } ]
+  @UI.lineItem: [ {
+    position: 73
+  } ]
+  @UI.selectionField: [ {
+    position: 73
+  } ]
+  CondicionesPago;
+  @EndUserText.label: 'Condiciones de pago texto'
+  @UI.identification: [ {
+   position: 74
+  } ]
+  @UI.lineItem: [ {
+    position: 74
+  } ]
+  @UI.selectionField: [ {
+    position: 74
+  } ]
+  CondicionesPagoTexto;
+  @EndUserText.label: 'Texto de cabecera de documento'
+  @UI.identification: [ {
+   position: 75
+  } ]
+  @UI.lineItem: [ {
+    position: 75
+  } ]
+  @UI.selectionField: [ {
+    position: 75
+  } ]
+  TextoCabecera;
+  @EndUserText.label: 'Texto posición'
+  @UI.identification: [ {
+   position: 76
+  } ]
+  @UI.lineItem: [ {
+    position: 76
+  } ]
+  @UI.selectionField: [ {
+    position: 76
+  } ]
+  TextoPosicion;
+
+
+  @UI.identification: [ {
+    position: 80
+  } ]
+  @UI.lineItem: [ {
+    position: 80
+  } ]
+  @UI.selectionField: [ {
+    position: 80
+  } ]
+  CreatedBy;
+
+  @UI.identification: [ {
+    position: 90
+  } ]
+  @UI.lineItem: [ {
+    position: 90
+  } ]
+  @UI.selectionField: [ {
+    position: 90
+  } ]
+  CreatedAt;
+
+  @UI.identification: [ {
+    position: 100
+  } ]
+  @UI.lineItem: [ {
+    position: 100
+  } ]
+  @UI.selectionField: [ {
+    position: 100
+  } ]
+  LastChangedBy;
+
+  @UI.identification: [ {
+    position: 110
+  } ]
+  @UI.lineItem: [ {
+    position: 110
+  } ]
+  @UI.selectionField: [ {
+    position: 110
+  } ]
+  LastChangedAt;
+
+  @UI.identification: [ {
+    position: 120
+  } ]
+  @UI.lineItem: [ {
+    position: 120
+  } ]
+  @UI.selectionField: [ {
+    position: 120
+  } ]
+  LocalLastChangedAt;
+
+  @EndUserText.label: '_BaseEntity'
+  @UI.identification: [ {
+    position: 130 ,
+    label: '_BaseEntity'
+  } ]
+  @UI.lineItem: [ {
+    position: 130 ,
+    label: '_BaseEntity'
+  } ]
+  @UI.selectionField: [ {
+    position: 130
+  } ]
+  _BaseEntity;
+}

@@ -1,0 +1,79 @@
+managed implementation in class ZBP_R_TBL_ASING_MRKO unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TBL_ASING_MRKO alias ZrTblAsingMrko
+persistent table ztbl_asing_mrko
+extensible
+draft table ztbl_asng_mrko_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+{
+  field ( readonly )
+  UUID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  ClaseDocumentoTexto,
+  CondicionesPagoTexto;
+
+
+  field ( numbering : managed )
+  UUID;
+
+  field ( mandatory ) Supplier, Companycode, Plant, FolioFactura, FechaEmision, FechaContabilizacion;
+
+  create;
+  update;
+  delete;
+
+
+
+  validation validateMandatoryFields on save { create; update; field Companycode, Supplier, Plant, FolioFactura, FechaEmision, FechaContabilizacion; }
+
+
+  determination DeriveClaseDocumento on modify { field ClaseDocumento; }
+  determination DeriveCondicionesPago on modify { field CondicionesPago; }
+
+  side effects
+  {
+    field ClaseDocumento affects field ClaseDocumentoTexto;
+    field CondicionesPago affects field CondicionesPagoTexto;
+
+  }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation validateMandatoryFields;
+  }
+
+  mapping for ztbl_asing_mrko corresponding extensible
+    {
+      UUID                 = UUID;
+      Companycode          = COMPANYCODE;
+      Supplier             = SUPPLIER;
+      Plant                = PLANT;
+      FolioFactura         = FOLIO_FACTURA;
+      FechaEmision         = FECHA_EMISION;
+      FechaContabilizacion = FECHA_CONTABILIZACION;
+      ClaseDocumento       = clase_documento;
+      ClaseDocumentoTexto  = clase_documentotexto;
+      CondicionesPago      = condiciones_pago;
+      CondicionesPagoTexto = condiciones_pagotexto;
+      TextoCabecera        = texto_cabecera;
+      TextoPosicion        = texto_posicion;
+      CreatedBy            = CREATED_BY;
+      CreatedAt            = CREATED_AT;
+      LastChangedBy        = LAST_CHANGED_BY;
+      LastChangedAt        = LAST_CHANGED_AT;
+      LocalLastChangedAt   = LOCAL_LAST_CHANGED_AT;
+    }
+
+}

@@ -1,0 +1,426 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Movimiento de Material',
+    typeNamePlural: 'Movimientos de Material',
+                      typeImageUrl: 'sap-icon://excel-attachment',
+
+    title: { type: #STANDARD, value: 'DocumentoMaterial' },
+    description: { type: #STANDARD, value: 'NombreMaterial' }
+  }
+}
+
+annotate entity Z_I_MOVIMIENTO_MATERIAL with
+{
+  /* =========================================================
+     CONFIGURACIÓN DE LA OBJECT PAGE (Pestañas y Grupos)
+     ========================================================= */
+  @UI.facet: [
+    {
+      id:              'GeneralCollection',
+      type:            #COLLECTION,
+      label:           'Información del Documento',
+      position:        10
+    },
+    {
+      id:              'GrupoLogistica',
+      type:            #FIELDGROUP_REFERENCE,
+      parentId:        'GeneralCollection',
+      targetQualifier: 'LogisticaGroup',
+      label:           'Datos de Logística',
+      position:        10
+    },
+    {
+      id:              'GrupoFinanzas',
+      type:            #FIELDGROUP_REFERENCE,
+      parentId:        'GeneralCollection',
+      targetQualifier: 'FinanzasGroup',
+      label:           'Datos Contables y Financieros',
+      position:        20
+    }
+  ]
+
+  /* =========================================================
+     CABECERA Y CAMPOS PRINCIPALES DE BÚSQUEDA
+     ========================================================= */
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem:       [{ position: 10 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @Consumption.filter:{ selectionType: #SINGLE, multipleSelections: true }
+  DocumentoMaterial;
+
+  @UI.lineItem:       [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 20 }]
+  AnioDocumento;
+
+//  @UI.lineItem:       [{ position: 30 }]
+//  @UI.identification: [{ position: 30 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 30 }]
+  Posicion;
+
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem:       [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 40 }]
+  @Search.defaultSearchElement: true
+  CodigoMaterial;
+
+  @UI.selectionField: [{ position: 45 }]
+  @UI.lineItem:       [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 50 }]
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.8
+  NombreMaterial;
+
+
+  /* =========================================================
+     GRUPO DE LOGÍSTICA (LogisticaGroup)
+     ========================================================= */
+  @UI.selectionField: [{ position: 60 }]
+  @UI.lineItem:       [{ position: 60 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 60 }]
+  Centro;
+
+  @UI.selectionField: [{ position: 70 }]
+  @UI.lineItem:       [{ position: 70 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 70 }]
+  ClaseMovimiento;
+
+  @UI.selectionField: [{ position: 80 }]
+  @UI.lineItem:       [{ position: 80 }]
+  @UI.fieldGroup:     [{ qualifier: 'LogisticaGroup', position: 80 }]
+  FechaContabilizacion;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 90 }]
+  StorageLocation;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 100 }]
+  StorageType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 110 }]
+  StorageBin;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 120 }]
+  Batch;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 130 }]
+  ShelfLifeExpirationDate;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 140 }]
+  ManufactureDate;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 150 }]
+  Supplier;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 160 }]
+  Customer;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 170 }]
+  SalesOrder;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 180 }]
+  SalesOrderItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 190 }]
+  SalesOrderScheduleLine;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 200 }]
+  PurchaseOrder;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 210 }]
+  PurchaseOrderItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 220 }]
+  QuantityInBaseUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 230 }]
+  MaterialBaseUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 240 }]
+  QuantityInEntryUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 250 }]
+  EntryUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 260 }]
+  DocumentDate;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 270 }]
+  InventoryStockType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 280 }]
+  InventorySpecialStockType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 290 }]
+  StockOwner;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 300 }]
+  Reservation;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 310 }]
+  ReservationItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 320 }]
+  ReservationIsFinallyIssued;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 330 }]
+  DeliveryDocumentItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 340 }]
+  DeliveryQuantityUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 350 }]
+  QuantityInDeliveryQtyUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 360 }]
+  OrderID;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 370 }]
+  OrderItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 380 }]
+  ManufacturingOrder;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 390 }]
+  ManufacturingOrderItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 400 }]
+  MaintOrderRoutingNumber;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 410 }]
+  MaintOrderOperationCounter;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 420 }]
+  ProjectNetwork;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 430 }]
+  WBSElementInternalID;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 440 }]
+  SpecialStockIdfgWBSElement;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 450 }]
+  SpecialStockIdfgSalesOrder;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 460 }]
+  SpecialStockIdfgSalesOrderItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 470 }]
+  ReversedMaterialDocument;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 480 }]
+  ReversedMaterialDocumentYear;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 490 }]
+  ReversedMaterialDocumentItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 500 }]
+  RvslOfGoodsReceiptIsAllowed;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 510 }]
+  GoodsMovementReasonCode;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 520 }]
+  GoodsRecipientName;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 530 }]
+  UnloadingPointName;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 540 }]
+  ServicePerformer;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 550 }]
+  PersonWorkAgreement;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 560 }]
+  WorkItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 570 }]
+  ServicesRenderedDate;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 580 }]
+  IssgOrRcvgMaterial;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 590 }]
+  IssuingOrReceivingPlant;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 600 }]
+  IssuingOrReceivingStorageLoc;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 610 }]
+  IssgOrRcvgBatch;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 620 }]
+  IssgOrRcvgSpclStockInd;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 630 }]
+  IssuingOrReceivingValType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 640 }]
+  IssuingOrReceivingStockType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 650 }]
+  GoodsMovementRefDocType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 660 }]
+  ReferenceDocumentFiscalYear;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 670 }]
+  InvtryMgmtReferenceDocument;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 680 }]
+  InvtryMgmtRefDocumentItem;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 690 }]
+  GoodsReceiptType;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 700 }]
+  GoodsMovementIsCancelled;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 710 }]
+  IsCompletelyDelivered;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 720 }]
+  MaterialDocumentItemText;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 730 }]
+  IsAutomaticallyCreated;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 740 }]
+  SerialNumbersAreCreatedAutomly;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 750 }]
+  QtyInPurchaseOrderPriceUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 760 }]
+  OrderPriceUnit;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 770 }]
+  ProductStandardID;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 780 }]
+  EWMWarehouse;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 790 }]
+  EWMStorageBin;
+
+  @UI.fieldGroup: [{ qualifier: 'LogisticaGroup', position: 800 }]
+  MaterialDocumentPostingType;
+
+
+  @EndUserText.label: 'Documento Contable'
+  @Consumption.semanticObject: 'AccountingDocument' // Replicado del estándar: usamos AccountingDocument
+  @Consumption.semanticObjectMapping.additionalBinding:[
+    { localElement: 'CompanyCode',      element: 'CompanyCode' },
+    { localElement: 'FiscalYear', element: 'FiscalYear' },
+    { localElement: 'AsientoContable',  element: 'AccountingDocument' } // Mapea tu campo Z al campo estándar
+  ]
+  @UI: {
+    lineItem:       [{ position: 90 }], // Posición normal en la tabla, Fiori Elements lo hará azul automáticamente
+    identification: [{ position: 90 }],
+    fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 10 }]
+  }
+
+  AsientoContable;
+
+
+//  @UI.lineItem:       [{ position: 100 }]
+//  @UI.identification: [{ position: 100 }]
+//  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 20 }]
+//  @EndUserText.label: 'Cuenta de Mayor'     // <-- CORRECCIÓN: Agregado Label explícito
+//  CuentaContable;
+//
+//  @UI.lineItem:       [{ position: 110 }]
+//  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 30 }]
+//  @Search.defaultSearchElement: true
+//  DescripcionCuenta;
+
+//  @UI.lineItem:       [{ position: 120 }]
+//  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 40 }]
+//  CuentaAlternativa;
+
+//  @UI.lineItem:       [{ position: 130 }]
+//  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 50 }]
+//  Importe;
+
+//  @UI.lineItem:       [{ position: 140 }]
+//  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 60 }]
+//  Moneda;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 70 }]
+  TotalGoodsMvtAmtInCCCrcy;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 80 }]
+  CompanyCodeCurrency;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 90 }]
+  GdsMvtExtAmtInCoCodeCrcy;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 100 }]
+  InventoryValuationType;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 110 }]
+  DebitCreditCode;
+  
+  @UI.lineItem:       [{ position: 31 }]
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 120 }]
+  CompanyCode;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 130 }]
+  BusinessArea;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 140 }]
+  ControllingArea;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 150 }]
+  CostCenter;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 160 }]
+  ProfitCenter;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 170 }]
+  GLAccount;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 180 }]
+  AccountAssignmentCategory;
+  
+  @UI.lineItem:       [{ position: 32 }]
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 181 }]
+  FiscalYear;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 190 }]
+  FiscalYearPeriod;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 200 }]
+  FiscalYearVariant;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 210 }]
+  ConsumptionPosting;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 220 }]
+  MultipleAccountAssignmentCode;
+
+  @UI.fieldGroup:     [{ qualifier: 'FinanzasGroup', position: 230 }]
+  MultiAcctAssgmtOriglMatlDocItm;
+
+
+  /* =========================================================
+     CAMPOS TÉCNICOS OCULTOS (No aportan valor en pantalla)
+     ========================================================= */
+  @UI.hidden: true
+  ReservationItemRecordType;
+
+  @UI.hidden: true
+  MaterialDocumentLine;
+
+  @UI.hidden: true
+  MaterialDocumentParentLine;
+
+  @UI.hidden: true
+  OriginalMaterialDocumentItem;
+}

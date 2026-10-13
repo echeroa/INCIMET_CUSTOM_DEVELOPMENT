@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TBL_ASING_MRKO'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TBL_ASING_MRKO'
+  }
+}
+define service ZUI_TBL_ASING_MRKO_O4 provider contracts odata_v4_ui {
+  expose ZC_TBL_ASING_MRKO;
+}
